@@ -2,8 +2,6 @@ D:\Documents\Repository\Othelo\Othelo\Othelo\bin\Debug\Othelo.exe.config
 D:\Documents\Repository\Othelo\Othelo\Othelo\bin\Debug\Othelo.exe
 D:\Documents\Repository\Othelo\Othelo\Othelo\bin\Debug\Othelo.pdb
 D:\Documents\Repository\Othelo\Othelo\Othelo\obj\Debug\Othelo.csprojResolveAssemblyReference.cache
-D:\Documents\Repository\Othelo\Othelo\Othelo\obj\Debug\MainWindow.baml
-D:\Documents\Repository\Othelo\Othelo\Othelo\obj\Debug\MainWindow.g.cs
 D:\Documents\Repository\Othelo\Othelo\Othelo\obj\Debug\App.g.cs
 D:\Documents\Repository\Othelo\Othelo\Othelo\obj\Debug\Othelo_MarkupCompile.cache
 D:\Documents\Repository\Othelo\Othelo\Othelo\obj\Debug\Othelo.g.resources
@@ -11,3 +9,5 @@ D:\Documents\Repository\Othelo\Othelo\Othelo\obj\Debug\Othelo.Properties.Resourc
 D:\Documents\Repository\Othelo\Othelo\Othelo\obj\Debug\Othelo.csproj.GenerateResource.Cache
 D:\Documents\Repository\Othelo\Othelo\Othelo\obj\Debug\Othelo.exe
 D:\Documents\Repository\Othelo\Othelo\Othelo\obj\Debug\Othelo.pdb
+D:\Documents\Repository\Othelo\Othelo\Othelo\obj\Debug\View\MainWindow.baml
+D:\Documents\Repository\Othelo\Othelo\Othelo\obj\Debug\View\MainWindow.g.cs
