@@ -11,3 +11,7 @@ D:\Documents\Repository\Othelo\Othelo\Othelo\obj\Debug\Othelo.exe
 D:\Documents\Repository\Othelo\Othelo\Othelo\obj\Debug\Othelo.pdb
 D:\Documents\Repository\Othelo\Othelo\Othelo\obj\Debug\View\MainWindow.baml
 D:\Documents\Repository\Othelo\Othelo\Othelo\obj\Debug\View\MainWindow.g.cs
+D:\Documents\Repository\Othelo\Othelo\Othelo\obj\Debug\View\Board.baml
+D:\Documents\Repository\Othelo\Othelo\Othelo\obj\Debug\View\Board.g.cs
+D:\Documents\Repository\Othelo\Othelo\Othelo\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Documents\Repository\Othelo\Othelo\Othelo\obj\Debug\Othelo_MarkupCompile.lref
