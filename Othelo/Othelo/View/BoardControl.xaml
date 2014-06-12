@@ -20,7 +20,7 @@
                 <GradientStop Color="#FFDADADA" Offset="1"/>
             </LinearGradientBrush>
         </Border.BorderBrush>
-        <ItemsControl>
+        <ItemsControl ItemsSource="{Binding}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <Grid/>
@@ -28,7 +28,7 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Ellipse/>
+                    <Button/>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>

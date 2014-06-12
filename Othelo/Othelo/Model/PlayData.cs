@@ -12,6 +12,12 @@ namespace Othelo.Model
         private Board _board;
         private int _turn;
 
+        public PlayData()
+        {
+            _turn = 0;
+            _board = new Board();
+        }
+
         /// <summary>
         /// 対戦を開始する。
         /// </summary>
@@ -30,7 +36,9 @@ namespace Othelo.Model
         /// <returns></returns>
         public bool IsFinish()
         {
-            return _board.AllData.Where(_ => _.Color == DiscColor.NONE).Count() == 0;
+            var playedNum = _board.AllData.Where(_ => _.Color == DiscColor.NONE).Count();
+            var res = playedNum == 0 || playedNum == _board.AllData.Count();
+            return res;
         }
 
         /// <summary>
