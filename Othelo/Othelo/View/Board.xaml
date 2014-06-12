@@ -6,11 +6,18 @@
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="400"
              Height="400" Width="400">
-    <Border CornerRadius="10" BorderThickness="5" Background="Green">
-        <Border.BorderBrush>
-            <LinearGradientBrush EndPoint="1,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0.5">
+    <Border CornerRadius="10" BorderThickness="5">
+        <Border.Background>
+            <LinearGradientBrush EndPoint="1,1" MappingMode="RelativeToBoundingBox" StartPoint="0,0">
                 <GradientStop Color="#FF007200"/>
-                <GradientStop Color="#FFC8D8C8" Offset="1"/>
+                <GradientStop Color="#FF19A219" Offset="1"/>
+                <GradientStop Color="#FF0B7C0B" Offset="0.675"/>
+            </LinearGradientBrush>
+       </Border.Background>
+        <Border.BorderBrush>
+            <LinearGradientBrush EndPoint="1,1" MappingMode="RelativeToBoundingBox" StartPoint="0,0">
+                <GradientStop Color="#FF585958"/>
+                <GradientStop Color="#FFDADADA" Offset="1"/>
             </LinearGradientBrush>
         </Border.BorderBrush>
         <Grid >
