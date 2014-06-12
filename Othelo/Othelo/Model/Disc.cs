@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Othelo.Model
+{
+    class Disc
+    {
+        public int ID { get; set; }
+        public DiscColor Color { get; set; }
+    }
+
+    public enum DiscColor
+    {
+        NONE, BLACK, WHITE, PLAYABLE
+    }
+}
