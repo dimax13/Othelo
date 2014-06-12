@@ -41,6 +41,15 @@ namespace Othelo.Model
         }
 
         /// <summary>
+        /// 盤を初期化
+        /// ４つ石を置く
+        /// </summary>
+        public void Initialize()
+        {
+
+        }
+
+        /// <summary>
         /// 指定した一列の石データを取得する。
         /// </summary>
         /// <param name="row">開始行</param>
