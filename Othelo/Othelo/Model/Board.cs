@@ -40,6 +40,13 @@ namespace Othelo.Model
             set { _data[row * COLNUM + col] = value; }
         }
 
+        /// <summary>
+        /// 指定した一列の石データを取得する。
+        /// </summary>
+        /// <param name="row">開始行</param>
+        /// <param name="col">開始列</param>
+        /// <param name="ori">方向</param>
+        /// <returns></returns>
         public IEnumerable<Disc> GetLine(int row, int col, Orientation ori)
         {
             var changeValue = new Point();
