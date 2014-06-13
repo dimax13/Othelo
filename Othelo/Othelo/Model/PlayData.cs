@@ -47,6 +47,10 @@ namespace Othelo.Model
         /// <returns></returns>
         public Board Play(object param)
         {
+            var id = (int)param;
+            var row = (int)id / Board.COLNUM;
+            var col = (int)id % Board.COLNUM;
+            _board.Set(row, col, _turn % 2 == 0 ? DiscColor.BLACK : DiscColor.WHITE);
             return _board;
         }
 

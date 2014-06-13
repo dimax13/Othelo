@@ -11,10 +11,10 @@ namespace Othelo.Model
     class Board
     {
         private Disc[] _data;
-        private const int ROWNUM = 8, COLNUM = ROWNUM;
+        public static int ROWNUM = 8, COLNUM = ROWNUM;
         public Board()
         {
-            _data = Enumerable.Range(0, ROWNUM * COLNUM).Select(_ => new Disc() { ID = _, Color = DiscColor.BLACK, Row = _ / COLNUM, Col = _ % COLNUM }).ToArray();
+            _data = Enumerable.Range(0, ROWNUM * COLNUM).Select(_ => new Disc() { ID = _, Color = DiscColor.NONE, Row = _ / COLNUM, Col = _ % COLNUM }).ToArray();
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace Othelo.Model
         public Disc this[int row, int col]
         {
             get { return _data[row * COLNUM + col]; }
-            set { _data[row * COLNUM + col] = value; }
+            private set { _data[row * COLNUM + col] = value; }
         }
 
         /// <summary>
@@ -50,7 +50,15 @@ namespace Othelo.Model
         /// </summary>
         public void Initialize()
         {
+            this.Set(ROWNUM / 2 - 1, COLNUM / 2 - 1, DiscColor.BLACK);
+            this.Set(ROWNUM / 2, COLNUM / 2, DiscColor.BLACK);
+            this.Set(ROWNUM / 2 - 1, COLNUM / 2, DiscColor.WHITE);
+            this.Set(ROWNUM / 2, COLNUM / 2 - 1, DiscColor.WHITE);
+        }
 
+        public void Set(int row, int col, DiscColor color)
+        {
+            this[row, col].Color = color;
         }
 
         /// <summary>

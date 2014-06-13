@@ -20,16 +20,19 @@ namespace Othelo.ViewModel
 
         #region Property
         private Board _board;
-        public IEnumerable<Disc> Board { get { return _board.AllData; } set { _board.AllData = value; RaisePropertyChanged("Board"); } }
+        public IEnumerable<Disc> Board {
+            get { return _board.AllData; } 
+            set { _board.AllData = value; RaisePropertyChanged("Board"); }
+        }
 
-        private int _blackScore = 2;
-        public int BlacScore
+        private int _blackScore = 0;
+        public int BlackScore
         {
             get { return _blackScore; }
             set { _blackScore = value; RaisePropertyChanged("BlacScore"); }
         }
 
-        private int _whiteScore = 2;
+        private int _whiteScore = 0;
         public int WhiteScore
         {
             get { return _whiteScore; }
@@ -49,10 +52,17 @@ namespace Othelo.ViewModel
             {
                 if (_start == null)
                 {
-                    _start = new RelayCommand(param => Board = (PlayData = new PlayData()).Start().AllData);
+                    _start = new RelayCommand(param => Board = this.Start());
                 }
                 return _start;
             }
+        }
+        private IEnumerable<Disc> Start()
+        {
+            var data = (PlayData = new PlayData()).Start().AllData;
+            BlackScore = data.Count(_ => _.Color == DiscColor.BLACK);
+            WhiteScore = data.Count(_ => _.Color == DiscColor.WHITE);
+            return data;
         }
 
         private RelayCommand _play;
@@ -62,12 +72,18 @@ namespace Othelo.ViewModel
             {
                 if (_play == null)
                 {
-                    _play = new RelayCommand(param => Board = PlayData.Play(param).AllData, param => PlayData != null && !PlayData.IsFinish());
+                    _play = new RelayCommand(param => Board = this.Play(param), param => PlayData != null && !PlayData.IsFinish());
                 }
                 return _play;
             }
         }
-
+        private IEnumerable<Disc> Play(object param)
+        {
+            var data = PlayData.Play(param).AllData;
+            BlackScore = data.Count(_ => _.Color == DiscColor.BLACK);
+            WhiteScore = data.Count(_ => _.Color == DiscColor.WHITE);
+            return data;
+        }
 
         private RelayCommand _save;
         public ICommand SaveCommand

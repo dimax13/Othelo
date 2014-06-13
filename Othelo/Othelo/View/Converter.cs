@@ -17,7 +17,19 @@ namespace Othelo.View
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var color = (Model.DiscColor)value;
-            return color == Model.DiscColor.BLACK ? new SolidColorBrush(Colors.Black) : new SolidColorBrush(Colors.White);
+            switch (color)
+            {
+                case Othelo.Model.DiscColor.NONE:
+                    return new SolidColorBrush(Colors.Transparent);
+                case Othelo.Model.DiscColor.BLACK:
+                    return new SolidColorBrush(Colors.Black);
+                case Othelo.Model.DiscColor.WHITE:
+                    return new SolidColorBrush(Colors.White);
+                case Othelo.Model.DiscColor.PLAYABLE:
+                    return new SolidColorBrush(Colors.Orange);
+                default:
+                    return new SolidColorBrush(Colors.Transparent);
+            }
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

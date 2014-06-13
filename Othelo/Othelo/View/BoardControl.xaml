@@ -13,7 +13,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Ellipse Fill="{TemplateBinding Background}" Width="40" Height="40"/>
+                        <Ellipse Fill="{TemplateBinding Background}"  Width="40" Height="40"/>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
