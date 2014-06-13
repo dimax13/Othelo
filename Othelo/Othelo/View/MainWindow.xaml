@@ -16,7 +16,7 @@
         </DockPanel.Resources>
         <Menu DockPanel.Dock="Top" FontSize="16">
             <MenuItem Header="ファイル">
-                <MenuItem Header="新規開始"/>
+                <MenuItem Header="新規開始" Command="{Binding Path=StartCommand}"/>
                 <MenuItem Header="中断"/>
                 <MenuItem Header="再開"/>
                 <MenuItem Header="終了" Command="{Binding Path=ExitCommand}"/>
@@ -30,6 +30,6 @@
             <TextBlock Text="白"/>
             <TextBlock Text="スコア"/>
         </StackPanel>
-        <local:BoardControl DockPanel.Dock="Bottom"/>
+        <local:BoardControl DockPanel.Dock="Bottom" DataContext="{Binding}"/>
     </DockPanel>
 </Window>

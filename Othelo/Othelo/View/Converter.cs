@@ -16,8 +16,8 @@ namespace Othelo.View
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var source = (IEnumerable<Model.Disc>)value;
-            return source.Select(_ => new Button() { Background = _.Color == Model.DiscColor.BLACK ? new SolidColorBrush(Colors.Black) : new SolidColorBrush(Colors.White) });
+            var color = (Model.DiscColor)value;
+            return color == Model.DiscColor.BLACK ? new SolidColorBrush(Colors.Black) : new SolidColorBrush(Colors.White);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

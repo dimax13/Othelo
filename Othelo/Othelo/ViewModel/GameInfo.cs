@@ -15,12 +15,12 @@ namespace Othelo.ViewModel
         public GameInfo()
         {
             PlayData = new PlayData();
-            Board = new Board();
+            _board = new Board();
         }
 
         #region Property
         private Board _board;
-        public Board Board { get { return _board; } set { _board = value; RaisePropertyChanged("Board"); } }
+        public IEnumerable<Disc> Board { get { return _board.AllData; } set { _board.AllData = value; RaisePropertyChanged("Board"); } }
 
         private int _blackScore = 2;
         public int BlacScore
@@ -49,7 +49,7 @@ namespace Othelo.ViewModel
             {
                 if (_start == null)
                 {
-                    _start = new RelayCommand(param => Board = (PlayData = new PlayData()).Start());
+                    _start = new RelayCommand(param => Board = (PlayData = new PlayData()).Start().AllData);
                 }
                 return _start;
             }
@@ -62,7 +62,7 @@ namespace Othelo.ViewModel
             {
                 if (_play == null)
                 {
-                    _play = new RelayCommand(param => Board = PlayData.Play(param), param => PlayData != null && !PlayData.IsFinish());
+                    _play = new RelayCommand(param => Board = PlayData.Play(param).AllData, param => PlayData != null && !PlayData.IsFinish());
                 }
                 return _play;
             }

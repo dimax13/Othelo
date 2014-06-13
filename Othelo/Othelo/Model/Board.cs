@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Collections.ObjectModel;
 
 namespace Othelo.Model
 {
@@ -13,8 +14,7 @@ namespace Othelo.Model
         private const int ROWNUM = 8, COLNUM = ROWNUM;
         public Board()
         {
-            var id = 0;
-            _data = Enumerable.Repeat<Disc>(new Disc(){ID = id++}, ROWNUM * COLNUM).ToArray();
+            _data = Enumerable.Range(0, ROWNUM * COLNUM).Select(_ => new Disc() { ID = _, Color = DiscColor.BLACK, Row = _ / COLNUM, Col = _ % COLNUM }).ToArray();
         }
 
         /// <summary>
@@ -25,6 +25,10 @@ namespace Othelo.Model
             get
             {
                 foreach (var item in _data) yield return item;
+            }
+            set
+            {
+                _data = value.ToArray();
             }
         }
 

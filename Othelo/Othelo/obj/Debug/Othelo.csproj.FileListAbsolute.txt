@@ -31,4 +31,3 @@ C:\home\document\repository\Othelo\Othelo\Othelo\obj\Debug\Othelo.csproj.Generat
 C:\home\document\repository\Othelo\Othelo\Othelo\obj\Debug\Othelo.pdb
 C:\home\document\repository\Othelo\Othelo\Othelo\obj\Debug\View\BoardControl.baml
 C:\home\document\repository\Othelo\Othelo\Othelo\obj\Debug\View\BoardControl.g.cs
-C:\home\document\repository\Othelo\Othelo\Othelo\obj\Debug\Othelo.csprojResolveAssemblyReference.cache
