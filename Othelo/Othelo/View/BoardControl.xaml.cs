@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Othelo
+namespace Othelo.View
 {
     /// <summary>
     /// Board.xaml の相互作用ロジック
     /// </summary>
-    public partial class Board : UserControl
+    public partial class BoardControl : UserControl
     {
-        public Board()
+        public BoardControl()
         {
             InitializeComponent();
         }
