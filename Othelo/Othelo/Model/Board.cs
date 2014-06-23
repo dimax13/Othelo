@@ -100,8 +100,14 @@ namespace Othelo.Model
                 default:
                     break;
             }
-            for (int i = row, j = col; i >= 0 && i < ROWNUM && j >= 0 && j < COLNUM; i += (int)changeValue.Y, j += (int)changeValue.X)
-                yield return _data[i * COLNUM + j];
+            var res = new List<Disc>();
+            for (int i = row + (int)changeValue.Y, j = col + (int)changeValue.X; i >= 0 && i < ROWNUM && j >= 0 && j < COLNUM; i += (int)changeValue.Y, j += (int)changeValue.X)
+            {
+                res.Add(_data[i * COLNUM + j]);
+                if (_data[i * COLNUM + j].Color == _data[row * COLNUM + col].Color) break;
+                if (_data[i * COLNUM + j].Color == DiscColor.NONE || _data[i * COLNUM + j].Color == DiscColor.PLAYABLE) break;
+            }
+            return res;
         }
     }
 

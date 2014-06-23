@@ -29,7 +29,7 @@ namespace Othelo.ViewModel
         public int BlackScore
         {
             get { return _blackScore; }
-            set { _blackScore = value; RaisePropertyChanged("BlacScore"); }
+            set { _blackScore = value; RaisePropertyChanged("BlackScore"); }
         }
 
         private int _whiteScore = 0;
@@ -72,7 +72,7 @@ namespace Othelo.ViewModel
             {
                 if (_play == null)
                 {
-                    _play = new RelayCommand(param => Board = this.Play(param), param => PlayData != null && !PlayData.IsFinish());
+                    _play = new RelayCommand(param => Board = this.Play(param), param => this.CanPlay(param));
                 }
                 return _play;
             }
@@ -85,16 +85,33 @@ namespace Othelo.ViewModel
         /// <returns></returns>
         private IEnumerable<Disc> Play(object param)
         {
-            var button = param as System.Windows.Controls.Button;
-            if (button == null) return this.Start();
-            var parent = System.Windows.Media.VisualTreeHelper.GetParent(button) as System.Windows.Controls.ContentPresenter;
-            if (parent == null) return this.Start();
-            var disc = parent.Content as Disc;
+            var disc = GetDiscFromParam(param);
             if (disc == null) return this.Start();
             var data = PlayData.Play(disc.Row, disc.Col).AllData;
             BlackScore = data.Count(_ => _.Color == DiscColor.BLACK);
             WhiteScore = data.Count(_ => _.Color == DiscColor.WHITE);
             return data;
+        }
+
+        private Disc GetDiscFromParam(object param)
+        {
+            var button = param as System.Windows.Controls.Button;
+            if (button == null) return null;
+            var parent = System.Windows.Media.VisualTreeHelper.GetParent(button) as System.Windows.Controls.ContentPresenter;
+            if (parent == null) return null;
+            var disc = parent.Content as Disc;
+            return disc;
+        }
+
+        /// <summary>
+        /// 石を置くことができるか判定
+        /// </summary>
+        /// <param name="param"></param>
+        /// <returns></returns>
+        private bool CanPlay(object param)
+        {
+            var disc = GetDiscFromParam(param);
+            return disc != null && PlayData != null && !PlayData.IsFinish() && PlayData.CanPlay(disc.Row, disc.Col);
         }
 
         private RelayCommand _save;
