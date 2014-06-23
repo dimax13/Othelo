@@ -45,11 +45,8 @@ namespace Othelo.Model
         /// 指定箇所に石を打つ。
         /// </summary>
         /// <returns></returns>
-        public Board Play(object param)
+        public Board Play(int row, int col)
         {
-            var id = (int)param;
-            var row = (int)id / Board.COLNUM;
-            var col = (int)id % Board.COLNUM;
             _board.Set(row, col, _turn % 2 == 0 ? DiscColor.BLACK : DiscColor.WHITE);
             return _board;
         }

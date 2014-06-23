@@ -62,7 +62,7 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Button Background="{Binding Path=Color, Converter={StaticResource convert}}"/>
+                    <Button Background="{Binding Path=Color, Converter={StaticResource convert}}" Command="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext.PlayCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
             <ItemsControl.ItemContainerStyle>

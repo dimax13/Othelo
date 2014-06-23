@@ -77,9 +77,21 @@ namespace Othelo.ViewModel
                 return _play;
             }
         }
+
+        /// <summary>
+        /// クリックした石を自分の色にする。
+        /// </summary>
+        /// <param name="param">石自身(Button)<param>
+        /// <returns></returns>
         private IEnumerable<Disc> Play(object param)
         {
-            var data = PlayData.Play(param).AllData;
+            var button = param as System.Windows.Controls.Button;
+            if (button == null) return this.Start();
+            var parent = System.Windows.Media.VisualTreeHelper.GetParent(button) as System.Windows.Controls.ContentPresenter;
+            if (parent == null) return this.Start();
+            var disc = parent.Content as Disc;
+            if (disc == null) return this.Start();
+            var data = PlayData.Play(disc.Row, disc.Col).AllData;
             BlackScore = data.Count(_ => _.Color == DiscColor.BLACK);
             WhiteScore = data.Count(_ => _.Color == DiscColor.WHITE);
             return data;
