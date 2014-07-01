@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:Othelo.View"
         xmlns:vm="clr-namespace:Othelo.ViewModel"
-        Title="WPF Othelo" Height="480" Width="640" FontFamily="Rounded M+ 1c black">
+        Title="WPF Othelo" Height="480" Width="640" FontFamily="Rounded M+ 1c black"
+        x:Name="mainWindow">
     <Window.DataContext>
         <vm:GameInfo/>
     </Window.DataContext>
@@ -11,7 +12,7 @@
         <DockPanel.Resources>
             <Style TargetType="TextBlock">
                 <Setter Property="FontSize" Value="32"/>
-                <Setter Property="Margin" Value="8"/>
+                <Setter Property="Margin" Value="8, 0"/>
             </Style>
             <Style TargetType="TextBlock" x:Key="scoreStyle" BasedOn="{StaticResource {x:Type TextBlock}}">
                 <Setter Property="FontSize" Value="18"/>
@@ -33,6 +34,12 @@
             <TextBlock Text="白"/>
             <TextBlock Text="{Binding Path=WhiteScore, StringFormat=スコア：{0}}" Style="{StaticResource scoreStyle}"/>
         </StackPanel>
+        <Popup IsOpen="{Binding Path=IsFinished}" Placement="Center" PopupAnimation="Slide" AllowsTransparency="True">
+            <StackPanel Background="White">
+                <TextBlock Text="Winner" Foreground="Orange" HorizontalAlignment="Center"/>
+                <TextBlock Text="black" FontSize="82" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </Popup>
         <local:BoardControl DockPanel.Dock="Bottom" DataContext="{Binding}"/>
     </DockPanel>
 </Window>

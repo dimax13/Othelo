@@ -39,6 +39,15 @@ namespace Othelo.ViewModel
             set { _whiteScore = value; RaisePropertyChanged("WhiteScore"); }
         }
 
+        private bool _isFinished;
+
+        public bool IsFinished
+        {
+            get { return _isFinished; }
+            set { _isFinished = value; RaisePropertyChanged("IsFinished"); }
+        }
+        
+
         public PlayData PlayData { get; set; }
 
         #endregion
@@ -111,7 +120,7 @@ namespace Othelo.ViewModel
         private bool CanPlay(object param)
         {
             var disc = GetDiscFromParam(param);
-            return disc != null && PlayData != null && !PlayData.IsFinish() && PlayData.CanPlay(disc.Row, disc.Col);
+            return disc != null && PlayData != null && !(IsFinished = PlayData.IsFinish()) && PlayData.CanPlay(disc.Row, disc.Col);
         }
 
         private RelayCommand _save;
@@ -162,10 +171,7 @@ namespace Othelo.ViewModel
                 return _exit;
             }
         }
-        
 
-
-        
         #endregion
     }
 }
