@@ -39,14 +39,17 @@ namespace Othelo.ViewModel
             set { _whiteScore = value; RaisePropertyChanged("WhiteScore"); }
         }
 
-        private bool _isFinished;
-
+        private bool _isFinished = false;
         public bool IsFinished
         {
             get { return _isFinished; }
-            set { _isFinished = value; RaisePropertyChanged("IsFinished"); }
+            set { _isFinished = value; RaisePropertyChanged("IsFinished"); RaisePropertyChanged("Winner"); }
         }
-        
+
+        public string Winner
+        {
+            get { return _blackScore > _whiteScore ? "black" : "white"; }
+        }        
 
         public PlayData PlayData { get; set; }
 

@@ -37,8 +37,8 @@ namespace Othelo.Model
         /// <returns></returns>
         public bool IsFinish()
         {
-            var playedNum = _board.AllData.Where(_ => _.Color == DiscColor.NONE).Count();
-            var res = playedNum == 0 || playedNum == _board.AllData.Count();
+            var playedNum = _board.AllData.Where(_ => _.Color == DiscColor.PLAYABLE).Count();
+            var res = playedNum == 0;
             return res;
         }
 

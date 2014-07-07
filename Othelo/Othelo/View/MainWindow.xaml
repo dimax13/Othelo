@@ -37,7 +37,20 @@
         <Popup IsOpen="{Binding Path=IsFinished}" Placement="Center" PopupAnimation="Slide" AllowsTransparency="True">
             <StackPanel Background="White">
                 <TextBlock Text="Winner" Foreground="Orange" HorizontalAlignment="Center"/>
-                <TextBlock Text="black" FontSize="82" HorizontalAlignment="Center"/>
+                <TextBlock Text="{Binding Path=Winner}" FontSize="82" HorizontalAlignment="Center"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <StackPanel.Resources>
+                        <Style TargetType="Button">
+                            <Setter Property="Margin" Value="4"/>
+                            <Setter Property="Padding" Value="2"/>
+                            <Setter Property="Background" Value="LightGray"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                        </Style>
+                    </StackPanel.Resources>
+                    <Button Content="もう一度"/>
+                    <Button Content="モードを変える"/>
+                    <Button Content="おわる"/>
+                </StackPanel>
             </StackPanel>
         </Popup>
         <local:BoardControl DockPanel.Dock="Bottom" DataContext="{Binding}"/>
