@@ -42,6 +42,11 @@ namespace Othelo.Model
             return res;
         }
 
+        public bool CanPlay(int row, int col)
+        {
+            return _board[row, col].Color == DiscColor.PLAYABLE;
+        }
+
         /// <summary>
         /// 指定箇所に石を打つ。
         /// </summary>
@@ -60,15 +65,6 @@ namespace Othelo.Model
             return _turn % 2 == 0 ? DiscColor.BLACK : DiscColor.WHITE;
         }
 
-        private void UpdatePlayableDisc()
-        {
-            // PlayableをNoneにする
-            foreach (var disc in _board.AllData) disc.Color = disc.Color == DiscColor.PLAYABLE ? DiscColor.NONE : disc.Color;
-            SetDiscWhere(line => { return line.LastOrDefault() == null || line.LastOrDefault().Color != DiscColor.NONE || line.Count < 2 || line[line.Count - 2].Color == GetTurnColor();},
-                DiscColor.PLAYABLE,
-                (line, color) => { line.LastOrDefault().Color = color;});
-        }
-
         private void SetDiscWhere(Func<List<Disc>, bool> isNotPlayable, DiscColor color, Action<List<Disc>, DiscColor> set)
         {
             var discList = _board.AllData.Where(_ => _.Color == GetTurnColor()).ToList();
@@ -81,19 +77,24 @@ namespace Othelo.Model
                     set(line, color);
                 }
             }
-
+        }
+        
+        private void UpdatePlayableDisc()
+        {
+            // PlayableをNoneにする
+            foreach (var disc in _board.AllData) disc.Color = disc.Color == DiscColor.PLAYABLE ? DiscColor.NONE : disc.Color;
+            SetDiscWhere(
+                line => { return line.LastOrDefault() == null || line.LastOrDefault().Color != DiscColor.NONE || line.Count < 2 || line[line.Count - 2].Color == GetTurnColor();},
+                DiscColor.PLAYABLE,
+                (line, color) => { line.LastOrDefault().Color = color;});
         }
 
         private void Reverse(int row, int col)
         {
-            SetDiscWhere(line => { return line.LastOrDefault() == null || line.LastOrDefault().Color != GetTurnColor(); },
+            SetDiscWhere(
+                line => { return line.LastOrDefault() == null || line.LastOrDefault().Color != GetTurnColor() || (line.FirstOrDefault().Row != row || line.FirstOrDefault().Col != col); },
                 GetTurnColor(),
-                (line, color) => { foreach(var disc in line) disc.Color = color;});
-        }
-
-        public bool CanPlay(int row, int col)
-        {
-            return _board[row, col].Color == DiscColor.PLAYABLE;
+                (line, color) => { foreach (var disc in line) disc.Color = color; });
         }
 
         /// <summary>
